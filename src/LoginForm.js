@@ -4,7 +4,10 @@ import './App.css';
 class LoginForm extends Component {
     render () {
         return (
-            <div>Login</div>
+            <form action="login">
+                 <div>Login</div>
+                <label htmlFor="password"></label>
+            </form>
         );
     }
 }
