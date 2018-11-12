@@ -14,11 +14,12 @@ export const createProject = (project) => {
             authorLastName: 'K',
             authorId: 1112,
             createAt: new Date()
+        }).then(() => {
+            dispatch({type: 'CREATE_PROJECT',   project});
+        }).catch((err) => {
+            dispatch({type: 'CREATE_PROJECT_ERROR', err});
         })
-        dispatch({
-            type: 'ADD_PROJECT',
-            project
-        })
+
     }
 
 }
