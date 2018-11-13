@@ -8,7 +8,7 @@ export const deleteProject = (id) => {
 export const createProject = (project) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
         const fireStore = getFirestore();
-        fireStore.collections('projects').add({
+        fireStore.collection('projects').add({
             ...project,
             authorFristName: 'Vadim',
             authorLastName: 'K',
