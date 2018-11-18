@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 const ProjectSummary = ({ project }) => {
     console.log( '-' , project)
@@ -13,5 +12,6 @@ const ProjectSummary = ({ project }) => {
         </div> 
     )
 }
+
 
 export default ProjectSummary;
