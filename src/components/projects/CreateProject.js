@@ -18,9 +18,9 @@ handleSubmit = (e) => {
     this.props.createProject(this.state);
 }
 
-  render() {
+render() {
     const { auth } = this.props;
-    if (!auth.id) return <Redirect to='/signIn' />
+    if (!auth.uid) return <Redirect to='/signIn' />
     return (
         <div className="container">
             <form className="white" onSubmit={this.handleSubmit}>
