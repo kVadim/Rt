@@ -8,11 +8,13 @@ export const deleteProject = (id) => {
 export const createProject = (project) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
         const fireStore = getFirestore();
+        const profile = getState().firebase.profile;
+        const authorId = getState().firebase.auth.uid;
         fireStore.collection('projects').add({
             ...project,
-            authorFristName: 'Vadim',
-            authorLastName: 'K',
-            authorId: 1112,
+            authorFirstName: profile.firstName,
+            authorLastName: profile.lastName,
+            authorId: authorId,
             createAt: new Date()
         }).then(() => {
             dispatch({type: 'CREATE_PROJECT',   project});
@@ -23,3 +25,4 @@ export const createProject = (project) => {
     }
 
 }
+
