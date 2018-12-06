@@ -2,7 +2,9 @@
 
 # dependencies
 /dist
-/functions
+/functions/node_modules
+/functions/package.json
+/functions/package-lock.json
 /node_modules
 
 # testing
