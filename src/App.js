@@ -7,6 +7,7 @@ import ProjectDetails from './components/projects/ProjectDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateProjet from './components/projects/CreateProject'
+import CreateRec from './ti-components/CreateRec'
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/create' component={CreateProjet} />
+            <Route path='/create-rec' component={CreateRec} />
           </Switch>
         </div>
       </BrowserRouter>
