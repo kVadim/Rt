@@ -8,6 +8,13 @@ state =  {
     title: '',
     content: ''
 }
+
+chunks = [];
+options = {mimeType: 'audio/webm'};
+// stream = navigator.mediaDevices.getUserMedia({ audio:true, video:false });
+// mediaRecorder = new MediaRecorder(this.stream, this.options);
+
+
 handleChange = (e) => {
     this.setState({
         [e.target.id]: e.target.value
@@ -19,12 +26,43 @@ handleSubmit = (e) => {
     this.props.history.push('/');
 }
 
+componentDidMount() {
+    navigator.mediaDevices.getUserMedia({ audio:true, video:false },
+        (stream) => {
+            console.warn('huuraaay')
+            this.mediaRecorder = new MediaRecorder(stream, this.options);
+            this.mediaRecorder.ondataavailable = handleDataAvailable;
+            console.log('this.mediaRecorder', this.mediaRecorder)
+
+          },
+          error); 
+
+    function handleDataAvailable(event) {
+        if (event.data.size > 0) {
+            console.log(event.data)
+            this.chunks.push(event.data);
+        } else {
+            // ...
+        }
+    }
+
+
+    function error(error) {console.warn(error)}
+
+}
+
+start(e) {
+    e.preventDefault();
+    console.log('start', this.mediaRecorder);
+
+}
+
 render() {
     const { auth } = this.props;
     if (!auth.uid) return <Redirect to='/signIn' />
     return (
         <div className="container">
-            <form className="white" onSubmit={this.handleSubmit}>
+            <form className="white" onSubmit={this.start}>
                 <h5 className="grey-text text-darken-3">Create new Rec</h5>
                 {/* <div className="input-field">
                     <label htmlFor="title">Title</label>
